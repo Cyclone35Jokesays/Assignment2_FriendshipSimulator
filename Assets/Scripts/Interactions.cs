@@ -4,14 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Interactions : MonoBehaviour
-{
-
-    public Transform playerTransform;
-    public Transform friendTransform;
+{ 
+    public Transform playerTrans;
+    public Transform friendTrans;
     public Animator anim;
     private bool wavingBack;
 
-    void Update()
+    private void Update()
     {
         StartCoroutine(WaveBack());
     }
@@ -19,11 +18,11 @@ public class Interactions : MonoBehaviour
     private IEnumerator WaveBack()
     {
         wavingBack = true;
-        if (Vector3.Distance(playerTransform.position, friendTransform.position) < 100f)
+        if (Vector3.Distance(playerTrans.position, friendTrans.position) < 100f)
         {
             anim.SetTrigger("IsWavingBack");
         }
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5);
         wavingBack = false;
     }
 
